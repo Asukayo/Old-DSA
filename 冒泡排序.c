@@ -22,9 +22,6 @@ void MPSort(int *a,int length){
         for(j = 1;j<length-i;j++){
             SwapTwoNumsByComparation(a+j-1,a+j);
         }
-        // for(j = 0;j<length-i;j++){
-        //     SwapTwoNumsByComparation(a+j,a+j+1);
-        // }
     }
     for(k = 0;k<length;k++){
         printf("%d,",*(a+k));
