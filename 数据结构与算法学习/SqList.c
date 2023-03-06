@@ -29,5 +29,33 @@ void InitList(SeqList *L){
     L->MaxSize = InitSize;
 }//创建动态分配的顺序表
 
+int  ListInsert(SqList *L,int i ,int e){
+    //判断输入的数据是否合法
+    if(i<1 || i>L->length+1){
+        return 0;
+    }
+    if(L->length>=InitList){
+        return 0;
+    }
+    int j = L->length;
 
+    for(j;j>=i;j--){
+        L->datas[i] = L->datas[i-1];//将datas数组里的每个数后移一位
+    }
+    L->datas[i-1] = e;
+    return 1;
+}//插入操作
 
+int ListDelete(SqList *L,int i,int *e){
+    //判断输入的数据是否合法
+    if(i<1 || i>L->length){
+        return 0;
+    }
+    //将被删除的数字赋给e
+    *e = L->datas[i-1];
+    //将被删除后的数字每个依次前移
+    for(int j = i;j<L->length;j++){
+        L->datas[j-1] = L->datas[j];
+    }
+    return 1;
+}//删除操作
