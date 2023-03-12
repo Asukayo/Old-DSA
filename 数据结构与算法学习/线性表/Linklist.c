@@ -26,6 +26,42 @@ int InitList(LinkList L){
     return 1;
 }//初始化一个带头结点的单链表
 
+LinkList Head_Insert(LinkList L){
+    LNode *s ;
+    int x;      //插入的数字
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;             //初始化链表操作
+    scanf("%d",&x);     //"&"是取指针运算符
+    while (x !=9999)
+    {
+        s = (LNode *)malloc(sizeof(LNode));
+        s->data = x;
+        s->next = L->next;
+        L->next = s;
+        scanf("%d",&x);
+    }
+    return L;   
+}//利用头插法创建链表（带头结点）
+
+LinkList Head_InsertWithNoHeadNode(LinkList L){
+    int x = 0;      //待插入数据
+    LNode* s;       //存储新创的节点
+    scanf("%d",&x);
+    L->next = (LNode*)malloc(sizeof(LNode));    //先单独创建头结点
+    L->data = x;
+    L->next = NULL;
+    scanf("%d",&x);
+    while (x!=9999)
+    {
+        s = (LNode*)malloc(sizeof(LNode));  //创建当前的节点
+        s->data = x;
+        s->next = L->next;          //将头结点设为s
+        L->next = s;               
+    }
+    return L;
+    
+}//不待头结点
+
 LNode * GetLinkListNode(LinkList L,int i){
     //i是要插入的元素的位序,从一开始
     //首先判断插入的位置是否合法
